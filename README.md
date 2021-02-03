@@ -1,5 +1,5 @@
-# TODO
--[x] *На текущий момент, в зависимости **faker** присутствует [ошибка](https://github.com/Marak/faker.js/issues/1093), поэтому важно устанавить **faker@5.1.0**. Добавил его в список зависимостей.* (problem [solved](https://github.com/Marak/faker.js/issues/1093#issuecomment-771864394))
+# Bugs
+* [x] Не билдится проект. *На текущий момент, в зависимости **faker** присутствует [ошибка](https://github.com/Marak/faker.js/issues/1093), поэтому важно устанавить **faker@5.1.0**. Добавил его в список зависимостей.* ([ошибка исправлена](https://github.com/Marak/faker.js/issues/1093#issuecomment-771864394))
 
 # Задание.
 
