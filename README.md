@@ -1,3 +1,5 @@
+[*Return to main repo*](https://github.com/gormonn/gormonn.github.io)
+
 # Bugs
 * [x] Не билдится проект. *На текущий момент, в зависимости **faker** присутствует [ошибка](https://github.com/Marak/faker.js/issues/1093), поэтому важно устанавить **faker@5.1.0**. Добавил его в список зависимостей.* ([ошибка исправлена](https://github.com/Marak/faker.js/issues/1093#issuecomment-771864394))
 
