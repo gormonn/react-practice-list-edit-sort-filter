@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "homepage": "https://gormonn.github.io/react-practice-list-edit-sort-filter",
   "scripts": {
-    "predeploy": "bpm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
