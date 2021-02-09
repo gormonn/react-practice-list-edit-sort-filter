@@ -6,7 +6,7 @@ import {
 } from "redux";
 import createSagaMiddleware from "redux-saga";
 import DevTools from "./DevTools";
-import { products, productsSagas } from "./pages/products/reducer";
+import { products, productsSagas } from "./components/products";
 
 const sagaMiddleware = createSagaMiddleware();
 

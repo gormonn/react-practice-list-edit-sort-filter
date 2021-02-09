@@ -28,5 +28,3 @@ export default function reducer(state = initialState, { type, payload }) {
       return state;
   }
 }
-export { default as productsSagas } from "./sagas";
-// запутанные экспорты если честно

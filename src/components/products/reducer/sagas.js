@@ -4,12 +4,12 @@ import {
   PRODUCTS_FETCH_SUCCEEDED,
   PRODUCTS_FETCH_FAILED
 } from "./const";
-import { getFakeProducts } from "../../mocks";
+import { fakeData } from "./fakeData";
 
 function* fetchProducts({ payload = {} }) {
   try {
     const { count = 5 } = payload;
-    const data = yield call(getFakeProducts, count);
+    const data = yield call(fakeData, count);
     yield put({
       type: PRODUCTS_FETCH_SUCCEEDED,
       payload: { data, loading: false }

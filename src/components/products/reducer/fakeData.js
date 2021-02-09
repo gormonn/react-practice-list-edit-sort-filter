@@ -34,7 +34,7 @@ const product = {
   // }
 };
 
-export async function getFakeProducts(count = 5) {
+export async function fakeData(count = 5) {
   return mocker()
     .schema("products", product, count)
     .build()

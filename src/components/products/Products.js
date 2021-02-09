@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Table } from "./table";
-import { PRODUCTS_FETCH_REQUESTED } from "../reducers/products/const";
-import { Name, Count, Price } from "./blocks";
+import { PRODUCTS_FETCH_REQUESTED } from "./reducer";
+import { Table, Name, Count, Price } from "../table";
 
 const columns = [
   {

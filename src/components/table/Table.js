@@ -1,11 +1,9 @@
 import React, { useEffect, useReducer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Body, Row, Cell, Text } from "../blocks";
-import { reducer, initialState } from "./reducer";
-import { useSorter } from "./hooks";
-// import { sorter } from "./utils";
-// import "./style.css";
+import { Body, Row, Cell, Text } from "./styled";
+// import { reducer, initialState } from "./reducer";
+import { useSorter, useTableReducer } from "./hooks";
 
 const Header = styled(Cell)`
   user-select: none;
@@ -15,7 +13,8 @@ const HeaderClickable = styled(Header)`
 `;
 
 export default function Table({ data, loading, error, columns }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useTableReducer();
   useEffect(() => {
     const getSortingState = () => {
       const sortingColumns = columns.filter((col) => col.sortDirections);
