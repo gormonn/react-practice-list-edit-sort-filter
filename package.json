@@ -5,6 +5,9 @@
   "keywords": [],
   "main": "src/index.js",
   "homepage": "https://gormonn.github.io/react-practice-list-edit-sort-filter",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "scripts": {
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
