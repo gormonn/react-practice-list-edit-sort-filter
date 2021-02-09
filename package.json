@@ -6,6 +6,8 @@
   "main": "src/index.js",
   "homepage": "https://gormonn.github.io/react-practice-list-edit-sort-filter",
   "scripts": {
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

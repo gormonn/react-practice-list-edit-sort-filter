@@ -1,16 +1,16 @@
-import mapValues from "lodash/mapValues";
-import identity from "lodash/identity";
+import mapValues from 'lodash/mapValues'
+import identity from 'lodash/identity'
 
-export default function persistState(
+export default function persistState (
   sessionId,
   deserializeState = identity,
   deserializeAction = identity
 ) {
   if (!sessionId) {
-    return (next) => (...args) => next(...args);
+    return (next) => (...args) => next(...args)
   }
 
-  function deserialize(state) {
+  function deserialize (state) {
     return {
       ...state,
       actionsById: mapValues(state.actionsById, (liftedAction) => ({
@@ -22,43 +22,43 @@ export default function persistState(
         ...computedState,
         state: deserializeState(computedState.state)
       }))
-    };
+    }
   }
 
   return (next) => (reducer, initialState, enhancer) => {
-    const key = `redux-dev-session-${sessionId}`;
+    const key = `redux-dev-session-${sessionId}`
 
-    let finalInitialState;
+    let finalInitialState
     try {
-      const json = localStorage.getItem(key);
+      const json = localStorage.getItem(key)
       if (json) {
-        finalInitialState = deserialize(JSON.parse(json)) || initialState;
-        next(reducer, initialState);
+        finalInitialState = deserialize(JSON.parse(json)) || initialState
+        next(reducer, initialState)
       }
     } catch (e) {
-      console.warn("Could not read debug session from localStorage:", e);
+      console.warn('Could not read debug session from localStorage:', e)
       try {
-        localStorage.removeItem(key);
+        localStorage.removeItem(key)
       } finally {
-        finalInitialState = undefined;
+        finalInitialState = undefined
       }
     }
 
-    const store = next(reducer, finalInitialState, enhancer);
+    const store = next(reducer, finalInitialState, enhancer)
 
     return {
       ...store,
-      dispatch(action) {
-        store.dispatch(action);
+      dispatch (action) {
+        store.dispatch(action)
 
         try {
-          localStorage.setItem(key, JSON.stringify(store.getState()));
+          localStorage.setItem(key, JSON.stringify(store.getState()))
         } catch (e) {
-          console.warn("Could not write debug session to localStorage:", e);
+          console.warn('Could not write debug session to localStorage:', e)
         }
 
-        return action;
+        return action
       }
-    };
-  };
+    }
+  }
 }

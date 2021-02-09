@@ -1,14 +1,14 @@
-import React from "react";
-import {Products} from "./components";
+import React from 'react'
+import { Products } from './components'
 
-import "./styles.css";
+import './styles.css'
 
-function App() {
+function App () {
   return (
     <div className="App">
       <Products />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

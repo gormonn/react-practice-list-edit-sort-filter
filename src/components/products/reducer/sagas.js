@@ -1,19 +1,19 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put, takeEvery } from 'redux-saga/effects'
 import {
   PRODUCTS_FETCH_REQUESTED,
   PRODUCTS_FETCH_SUCCEEDED,
   PRODUCTS_FETCH_FAILED
-} from "./const";
-import { fakeData } from "./fakeData";
+} from './const'
+import { fakeData } from './fakeData'
 
-function* fetchProducts({ payload = {} }) {
+function * fetchProducts ({ payload = {} }) {
   try {
-    const { count = 5 } = payload;
-    const data = yield call(fakeData, count);
+    const { count = 5 } = payload
+    const data = yield call(fakeData, count)
     yield put({
       type: PRODUCTS_FETCH_SUCCEEDED,
       payload: { data, loading: false }
-    });
+    })
   } catch (e) {
     yield put({
       type: PRODUCTS_FETCH_FAILED,
@@ -21,12 +21,12 @@ function* fetchProducts({ payload = {} }) {
         error: e.message,
         loading: false
       }
-    });
+    })
   }
 }
 
-function* productsSaga() {
-  yield takeEvery(PRODUCTS_FETCH_REQUESTED, fetchProducts);
+function * productsSaga () {
+  yield takeEvery(PRODUCTS_FETCH_REQUESTED, fetchProducts)
 }
 
-export default productsSaga;
+export default productsSaga

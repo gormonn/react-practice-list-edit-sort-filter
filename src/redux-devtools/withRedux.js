@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { ReactReduxContext } from "react-redux";
+import React, { Component } from 'react'
+import { ReactReduxContext } from 'react-redux'
 
-export default function withRedux(WrappedComponent) {
+export default function withRedux (WrappedComponent) {
   class WithRedux extends Component {
-    render() {
+    render () {
       // console.log("withRedux devtools");
       return (
         <ReactReduxContext.Consumer>
@@ -19,12 +19,12 @@ export default function withRedux(WrappedComponent) {
               >
                 <WrappedComponent {...this.props} />
               </ReactReduxContext.Provider>
-            );
+            )
           }}
         </ReactReduxContext.Consumer>
-      );
+      )
     }
   }
 
-  return WithRedux;
+  return WithRedux
 }

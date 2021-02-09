@@ -3,27 +3,27 @@
 это позволяет безболезненно изменять модель данных.
 Например, пока не проработана модель данных "доставки".
 */
-import mocker from "mocker-data-generator";
+import mocker from 'mocker-data-generator'
 
 const product = {
   id: {
-    faker: "random.uuid"
+    faker: 'random.uuid'
   },
   name: {
-    faker: "commerce.productName",
+    faker: 'commerce.productName',
     length: 15
   },
   email: {
-    faker: "internet.email"
+    faker: 'internet.email'
   },
   count: {
-    faker: "random.number"
+    faker: 'random.number'
   },
   price: {
-    faker: "finance.amount(100, 1000000, 2)"
+    faker: 'finance.amount(100, 1000000, 2)'
   },
   currency: {
-    static: "USD"
+    static: 'USD'
   }
   // delivery: {
   //   function: function () {
@@ -32,19 +32,19 @@ const product = {
   //     return this.faker.random.arrayElement([a1, "a2"]);
   //   }
   // }
-};
+}
 
-export async function fakeData(count = 5) {
+export async function fakeData (count = 5) {
   return mocker()
-    .schema("products", product, count)
+    .schema('products', product, count)
     .build()
     .then(
       (data) => {
         return new Promise((resolve) => {
-          setTimeout(() => resolve(data.products), 1000);
-        });
+          setTimeout(() => resolve(data.products), 1000)
+        })
         // return data.products;
       },
       (err) => console.error(err)
-    );
+    )
 }

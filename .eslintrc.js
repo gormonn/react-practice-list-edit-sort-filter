@@ -3,7 +3,13 @@ module.exports = {
     browser: true,
     es2021: true
   },
+  settings: {
+    react: {
+      vesion: 'detect'
+    }
+  },
   extends: [
+    "plugin:react-hooks/recommended",
     'plugin:react/recommended',
     'standard'
   ],
