@@ -1,6 +1,4 @@
-import React, { useEffect, 
-  // useReducer
- } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Body, Row, Cell, Text } from './styled'

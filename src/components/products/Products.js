@@ -12,6 +12,7 @@ const columns = [
     sortDirections: ['default', 'asc', 'desc'],
     size: 30,
     onFilter: (value, item) => item.name.indexOf(value) === 0,
+    // eslint-disable-next-line react/display-name
     render: (item) => (
       <>
         <Name>{item.name}</Name>
@@ -25,12 +26,14 @@ const columns = [
     dataIndex: 'price',
     sortDirections: ['default', 'asc', 'desc'],
     size: 20,
+    // eslint-disable-next-line react/display-name
     render: (item) => <Price price={item.price} />
   },
   {
     key: 'actions',
     title: 'Actions',
     size: 20,
+    // eslint-disable-next-line react/display-name
     render: (item, action = { edit: () => {}, delete: () => {} }) => (
       <>
         <button onClick={action.edit(item)}>Edit</button>
@@ -62,7 +65,8 @@ ProductsPage.propTypes = {
         price: PropTypes.number
       })
     )
-  }
+  },
+  dispatch: PropTypes.func
 }
 
 export default connect((state) => ({
