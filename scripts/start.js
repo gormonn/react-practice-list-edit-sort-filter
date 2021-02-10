@@ -85,7 +85,7 @@ checkBrowsers(paths.appPath, isInteractive)
       protocol,
       HOST,
       port,
-      paths.publicUrlOrPath.slice(0, -1)
+      // paths.publicUrlOrPath.slice(0, -1)
     );
     const devSocket = {
       warnings: warnings =>
@@ -138,7 +138,7 @@ checkBrowsers(paths.appPath, isInteractive)
         console.log();
       }
 
-      console.log(chalk.cyan('Starting the development server...\n'));
+      console.log(chalk.cyan('Starting the development server...\n',urls.localUrlForBrowser));
       openBrowser(urls.localUrlForBrowser);
     });
 
