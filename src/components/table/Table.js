@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Body, Row, Cell, Text } from './styled'
-// import { reducer, initialState } from "./reducer";
 import { useSorter, useTableReducer } from './hooks'
 
 const Header = styled(Cell)`

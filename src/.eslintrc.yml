@@ -8,6 +8,7 @@ extends:
   - 'plugin:react/recommended'
   - 'plugin:react-hooks/recommended'
   - standard
+  # - react-app
 parserOptions:
   ecmaFeatures:
     jsx: true
