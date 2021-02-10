@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Body = styled.div`
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   margin: 0;
@@ -12,6 +13,7 @@ export const Row = styled.div`
   width: 100%;
   flex-grow: 1;
   ${({ gray }) => (gray ? `& > ${Cell} { background: lightgray; }` : '')}
+  justify-content: space-between;
 `
 
 export const Cell = styled.div`
@@ -23,8 +25,8 @@ export const Cell = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: ${({ size }) => (size || 33)}%;
   padding: 10px;
+  max-width: ${({ size }) => (size || 33)}%;
 `
 
 export const Text = styled.div`

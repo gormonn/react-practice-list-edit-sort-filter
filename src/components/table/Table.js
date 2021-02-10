@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Body, Row, Cell, Text } from './styled'
@@ -11,9 +11,22 @@ const HeaderClickable = styled(Header)`
   cursor: pointer;
 `
 
+const AddButton = styled.button`
+  display: flex;
+`
+const FilterWraper = styled.div`
+  display: flex;
+`
+
 export default function Table ({ data, loading, error, columns }) {
   // const [state, dispatch] = useReducer(reducer, initialState);
   const [state, dispatch] = useTableReducer()
+  // const [filtered, setFiltered] = useState('')
+  const [filter, setFilter] = useState('') // replace "" from props (react-router)
+  const filterChange = e => {
+    e.preventDefault()
+    setFilter(e.target.value)
+  }
   useEffect(() => {
     const getSortingState = () => {
       const sortingColumns = columns.filter((col) => col.sortDirections)
@@ -31,11 +44,29 @@ export default function Table ({ data, loading, error, columns }) {
 
   // можно делать без условия, если возвращать sorterFunction = () => 0
   // но стоит ли выполнять лишнее действие?
-  const sortedData = sorterFunction ? data.slice(0).sort(sorterFunction) : data
+  const sortedData = sorterFunction
+    ? data.slice(0).sort(sorterFunction)
+    : data
+
+  const filteredData = filter.length
+    ? sortedData.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()))
+    : sortedData
+
   const rowKey = 'header-row'
 
   return (
     <Body>
+      <Row>
+        <Text>
+          <FilterWraper>
+            <input type="text" onChange={filterChange}></input>
+            <button type="submit">Искать</button>
+          </FilterWraper>
+        </Text>
+        <Text>
+          <AddButton>Add New</AddButton>
+        </Text>
+      </Row>
       <Row key={rowKey}>
         {columns.map(({ title, size, key, sortDirections }) => {
           const headerKey = `${rowKey}-${key}`
@@ -65,10 +96,11 @@ export default function Table ({ data, loading, error, columns }) {
           )
         })}
       </Row>
-      <TableBody {...{ data: sortedData, columns }} />
+      <TableBody {...{ data: filteredData, columns }} />
     </Body>
   )
 }
+
 function TableBody ({ data, columns }) {
   return data.map((item, i) => {
     const rowKey = `row-${i}`

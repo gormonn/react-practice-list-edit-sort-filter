@@ -10,8 +10,7 @@ const columns = [
     title: 'Name',
     dataIndex: 'name',
     sortDirections: ['default', 'asc', 'desc'],
-    size: 30,
-    onFilter: (value, item) => item.name.indexOf(value) === 0,
+    size: 45,
     // eslint-disable-next-line react/display-name
     render: (item) => (
       <>
@@ -25,14 +24,14 @@ const columns = [
     title: 'Price',
     dataIndex: 'price',
     sortDirections: ['default', 'asc', 'desc'],
-    size: 20,
+    size: 30,
     // eslint-disable-next-line react/display-name
     render: (item) => <Price price={item.price} />
   },
   {
     key: 'actions',
     title: 'Actions',
-    size: 20,
+    size: 25,
     // eslint-disable-next-line react/display-name
     render: (item, action = { edit: () => {}, delete: () => {} }) => (
       <>
@@ -50,7 +49,13 @@ function ProductsPage ({ products, dispatch }) {
   }, [dispatch])
   return (
     <div className="products">
-      <Table {...{ data, loading, error, columns }} />
+      <Table {...{
+        data,
+        loading,
+        error,
+        columns,
+        filterBy: 'name'
+      }} />
     </div>
   )
 }
