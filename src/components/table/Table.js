@@ -85,7 +85,7 @@ function Cells ({ rowKey, item, columns }) {
   return columns.map((column) => {
     return (
       <Cell key={`${rowKey}-${column.key}`} size={column.size}>
-        {column.render(item)}
+        {column.render ? column.render(item) : item}
       </Cell>
     )
   })
