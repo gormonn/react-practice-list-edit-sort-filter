@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "17962bcef10c60b4db4c416107c616ef",
+    "revision": "e1caab82c4cc8d414e0ccdac287604e0",
     "url": "/react-practice-list-edit-sort-filter/index.html"
   },
   {
-    "revision": "8d6131e816a428b79b6d",
-    "url": "/react-practice-list-edit-sort-filter/static/css/main.9b1431d8.chunk.css"
+    "revision": "8734e99496447bc775ed",
+    "url": "/react-practice-list-edit-sort-filter/static/css/main.0da9a3cf.chunk.css"
   },
   {
     "revision": "78fc87f678f0140bf183",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-practice-list-edit-sort-filter/static/js/2.bd33c200.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8d6131e816a428b79b6d",
-    "url": "/react-practice-list-edit-sort-filter/static/js/main.b79c2c31.chunk.js"
+    "revision": "8734e99496447bc775ed",
+    "url": "/react-practice-list-edit-sort-filter/static/js/main.fdc2631e.chunk.js"
   },
   {
     "revision": "bbb4a4d34435bff21a8e",
