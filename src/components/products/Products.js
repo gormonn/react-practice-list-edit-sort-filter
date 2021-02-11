@@ -6,6 +6,7 @@ import { PRODUCTS_FETCH_REQUESTED } from './reducer'
 import { useQuery } from './hooks'
 import { BottomContols, AddButton } from './styled'
 import Filter from './Filter'
+import './style.css'
 
 const columns = [
   {

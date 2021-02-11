@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Body = styled.div`
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin: 0;
