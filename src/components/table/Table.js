@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Body, Row, Cell, Text } from './styled'
-import { useSorter, useTableReducer } from './hooks'
+import { useSorter, useTableReducer, useQuery } from './hooks'
 
 const Header = styled(Cell)`
   user-select: none;
@@ -21,11 +22,20 @@ const FilterWraper = styled.div`
 export default function Table ({ data, loading, error, columns }) {
   // const [state, dispatch] = useReducer(reducer, initialState);
   const [state, dispatch] = useTableReducer()
-  // const [filtered, setFiltered] = useState('')
-  const [filter, setFilter] = useState('') // replace "" from props (react-router)
+
+  const history = useHistory()
+  const filterFromQuery = useQuery().get('search')
+  const [filter, setFilter] = useState(filterFromQuery) // replace "" from props (react-router)
   const filterChange = e => {
     e.preventDefault()
     setFilter(e.target.value)
+  }
+  const handleKeypress = e => {
+    console.log('handleKeypress', e)
+    if (e.keyCode === 13) {
+      console.log('keyCode')
+      history.push(`/?search=${e.target.value}`)
+    }
   }
   useEffect(() => {
     const getSortingState = () => {
@@ -42,14 +52,12 @@ export default function Table ({ data, loading, error, columns }) {
 
   const [sorterFunction, sortDirection] = useSorter(state)
 
-  // можно делать без условия, если возвращать sorterFunction = () => 0
-  // но стоит ли выполнять лишнее действие?
   const sortedData = sorterFunction
     ? data.slice(0).sort(sorterFunction)
     : data
 
-  const filteredData = filter.length
-    ? sortedData.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()))
+  const filteredData = filterFromQuery
+    ? sortedData.filter(item => item.name.toLowerCase().includes(filterFromQuery.toLowerCase()))
     : sortedData
 
   const rowKey = 'header-row'
@@ -59,8 +67,15 @@ export default function Table ({ data, loading, error, columns }) {
       <Row>
         <Text>
           <FilterWraper>
-            <input type="text" onChange={filterChange}></input>
-            <button type="submit">Искать</button>
+            <input
+              type="text"
+              onChange={filterChange}
+              onKeyUp={handleKeypress}
+              value={filter || filterFromQuery}
+            />
+            <Link to={`/?search=${filter}`}>
+              <button>Искать</button>
+            </Link>
           </FilterWraper>
         </Text>
         <Text>
