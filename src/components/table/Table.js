@@ -30,11 +30,9 @@ export default function Table ({ data, loading, error, columns }) {
     e.preventDefault()
     setFilter(e.target.value)
   }
-  const handleKeypress = e => {
-    console.log('handleKeypress', e)
+  const handleKeyUp = e => {
     if (e.keyCode === 13) {
-      console.log('keyCode')
-      history.push(`/?search=${e.target.value}`)
+      history.push(`?search=${e.target.value}`)
     }
   }
   useEffect(() => {
@@ -70,10 +68,10 @@ export default function Table ({ data, loading, error, columns }) {
             <input
               type="text"
               onChange={filterChange}
-              onKeyUp={handleKeypress}
+              onKeyUp={handleKeyUp}
               value={filter || filterFromQuery}
             />
-            <Link to={`/?search=${filter}`}>
+            <Link to={`?search=${filter}`}>
               <button>Искать</button>
             </Link>
           </FilterWraper>
