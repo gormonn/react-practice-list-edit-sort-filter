@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-practice-list-edit-sort-filter/precache-manifest.cea1d418a6aaf0f485cb2ce58c1aa1c2.js"
+  "/react-practice-list-edit-sort-filter/precache-manifest.9526836289490d33f645b2558e0f5650.js"
 );
 
 self.addEventListener('message', (event) => {
