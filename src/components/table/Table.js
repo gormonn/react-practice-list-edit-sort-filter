@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Body, Row, Cell, Text } from './styled'
-import { useSorter, useTableReducer, useQuery } from './hooks'
+import { useSorter, useTableReducer } from './hooks'
 
 const Header = styled(Cell)`
   user-select: none;
@@ -12,29 +11,9 @@ const HeaderClickable = styled(Header)`
   cursor: pointer;
 `
 
-const AddButton = styled.button`
-  display: flex;
-`
-const FilterWraper = styled.div`
-  display: flex;
-`
-
-export default function Table ({ data, loading, error, columns }) {
-  // const [state, dispatch] = useReducer(reducer, initialState);
+export default function Table ({ data, filter, loading, error, columns }) {
   const [state, dispatch] = useTableReducer()
 
-  const history = useHistory()
-  const filterFromQuery = useQuery().get('search')
-  const [filter, setFilter] = useState(filterFromQuery) // replace "" from props (react-router)
-  const filterChange = e => {
-    e.preventDefault()
-    setFilter(e.target.value)
-  }
-  const handleKeyUp = e => {
-    if (e.keyCode === 13) {
-      history.push(`?search=${e.target.value}`)
-    }
-  }
   useEffect(() => {
     const getSortingState = () => {
       const sortingColumns = columns.filter((col) => col.sortDirections)
@@ -54,32 +33,14 @@ export default function Table ({ data, loading, error, columns }) {
     ? data.slice(0).sort(sorterFunction)
     : data
 
-  const filteredData = filterFromQuery
-    ? sortedData.filter(item => item.name.toLowerCase().includes(filterFromQuery.toLowerCase()))
+  const filteredData = filter
+    ? sortedData.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()))
     : sortedData
 
   const rowKey = 'header-row'
 
   return (
     <Body>
-      <Row>
-        <Text>
-          <FilterWraper>
-            <input
-              type="text"
-              onChange={filterChange}
-              onKeyUp={handleKeyUp}
-              value={filter || filterFromQuery}
-            />
-            <Link to={`?search=${filter}`}>
-              <button>Искать</button>
-            </Link>
-          </FilterWraper>
-        </Text>
-        <Text>
-          <AddButton>Add New</AddButton>
-        </Text>
-      </Row>
       <Row key={rowKey}>
         {columns.map(({ title, size, key, sortDirections }) => {
           const headerKey = `${rowKey}-${key}`
@@ -137,6 +98,7 @@ function Cells ({ rowKey, item, columns }) {
 
 Table.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filter: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   columns: PropTypes.arrayOf(

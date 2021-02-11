@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { PRODUCTS_FETCH_REQUESTED } from './reducer'
 import { Table, Name, Count, Price } from '../table'
+import { PRODUCTS_FETCH_REQUESTED } from './reducer'
+import { useQuery } from './hooks'
+import { BottomContols, AddButton } from './styled'
+import Filter from './Filter'
 
 const columns = [
   {
@@ -44,13 +47,20 @@ const columns = [
 
 function ProductsPage ({ products, dispatch }) {
   const { data, loading, error } = products
+  const filterFromQuery = useQuery().get('search') || ''
+
   useEffect(() => {
     dispatch({ type: PRODUCTS_FETCH_REQUESTED, payload: { count: 100 } })
   }, [dispatch])
   return (
     <div className="products">
+      <BottomContols>
+        <Filter {...{ filterFromQuery }} />
+        <AddButton>Add New</AddButton>
+      </BottomContols>
       <Table {...{
         data,
+        filter: filterFromQuery,
         loading,
         error,
         columns,
@@ -61,7 +71,7 @@ function ProductsPage ({ products, dispatch }) {
 }
 
 ProductsPage.propTypes = {
-  products: {
+  products: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
     error: PropTypes.bool.isRequired,
     data: PropTypes.arrayOf(
@@ -70,7 +80,7 @@ ProductsPage.propTypes = {
         price: PropTypes.number
       })
     )
-  },
+  }),
   dispatch: PropTypes.func
 }
 
