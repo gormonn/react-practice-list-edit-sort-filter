@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/react-practice-list-edit-sort-filter/static/css/main.9b1431d8.chunk.css",
-    "main.js": "/react-practice-list-edit-sort-filter/static/js/main.2463668f.chunk.js",
-    "main.js.map": "/react-practice-list-edit-sort-filter/static/js/main.2463668f.chunk.js.map",
+    "main.js": "/react-practice-list-edit-sort-filter/static/js/main.b79c2c31.chunk.js",
+    "main.js.map": "/react-practice-list-edit-sort-filter/static/js/main.b79c2c31.chunk.js.map",
     "runtime-main.js": "/react-practice-list-edit-sort-filter/static/js/runtime-main.796a39c3.js",
     "runtime-main.js.map": "/react-practice-list-edit-sort-filter/static/js/runtime-main.796a39c3.js.map",
-    "static/js/2.2cd1679e.chunk.js": "/react-practice-list-edit-sort-filter/static/js/2.2cd1679e.chunk.js",
-    "static/js/2.2cd1679e.chunk.js.map": "/react-practice-list-edit-sort-filter/static/js/2.2cd1679e.chunk.js.map",
+    "static/js/2.bd33c200.chunk.js": "/react-practice-list-edit-sort-filter/static/js/2.bd33c200.chunk.js",
+    "static/js/2.bd33c200.chunk.js.map": "/react-practice-list-edit-sort-filter/static/js/2.bd33c200.chunk.js.map",
     "index.html": "/react-practice-list-edit-sort-filter/index.html",
-    "precache-manifest.9526836289490d33f645b2558e0f5650.js": "/react-practice-list-edit-sort-filter/precache-manifest.9526836289490d33f645b2558e0f5650.js",
+    "precache-manifest.891f4397a20f2475fd11098854c21758.js": "/react-practice-list-edit-sort-filter/precache-manifest.891f4397a20f2475fd11098854c21758.js",
     "service-worker.js": "/react-practice-list-edit-sort-filter/service-worker.js",
     "static/css/main.9b1431d8.chunk.css.map": "/react-practice-list-edit-sort-filter/static/css/main.9b1431d8.chunk.css.map",
-    "static/js/2.2cd1679e.chunk.js.LICENSE.txt": "/react-practice-list-edit-sort-filter/static/js/2.2cd1679e.chunk.js.LICENSE.txt",
+    "static/js/2.bd33c200.chunk.js.LICENSE.txt": "/react-practice-list-edit-sort-filter/static/js/2.bd33c200.chunk.js.LICENSE.txt",
     "static/media/ReadMe.md": "/react-practice-list-edit-sort-filter/static/media/ReadMe.6ea4de03.md"
   },
   "entrypoints": [
     "static/js/runtime-main.796a39c3.js",
-    "static/js/2.2cd1679e.chunk.js",
+    "static/js/2.bd33c200.chunk.js",
     "static/css/main.9b1431d8.chunk.css",
-    "static/js/main.2463668f.chunk.js"
+    "static/js/main.b79c2c31.chunk.js"
   ]
 }
