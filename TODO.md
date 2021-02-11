@@ -7,3 +7,4 @@
 # Для себя:
 * [ ] - добавить плагин [babel-plugin-typescript-to-proptypes](https://github.com/milesj/babel-plugin-typescript-to-proptypes). Позволяет генерить PropTypes из интерфейсов TypeScript
 * [ ] - Вникнуть в [react-flip-toolkit](https://github.com/aholachek/react-flip-toolkit)
+* [ ] - OpenDevtools в новом окне, когда не стоит расширение

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Table, Name, Count, Price } from '../table'
-import { Modal } from '../modal'
+// import { Modal } from '../modal'
 import { PRODUCTS_FETCH_REQUESTED } from './reducer'
 import { useQuery } from './hooks'
 import { BottomContols, AddButton } from './styled'
@@ -68,7 +68,7 @@ function ProductsPage ({ products, dispatch }) {
         columns,
         filterBy: 'name'
       }} />
-      <Modal/>
+      {/* <Modal/> */}
     </div>
   )
 }

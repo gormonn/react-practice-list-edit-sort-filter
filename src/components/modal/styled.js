@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   display: ${({ isOpen }) => isOpen ? 'block' : 'none'};
   position: fixed;
-  z-index: 100000000; // потомучто окно redux-devtools 99999999)
+  // z-index: 100000000; // потомучто окно redux-devtools 99999999)
   top: 0px;
   left: 0px;
   width: 100%;
