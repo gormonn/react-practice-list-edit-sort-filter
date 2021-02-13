@@ -5,8 +5,8 @@ import SelectCountry from './SelectCountry'
 import SelectCity from './SelectCity'
 import { Row, SelectType } from './styled'
 
-const typeList = ['', 'Страна', 'Город']
-const [Empty, Country, City] = typeList
+const deliveryTypeList = ['', 'Страна', 'Город']
+const [Empty, Country, City] = deliveryTypeList
 
 Delivery.propTypes = {
   deliveryType: PropTypes.string,
@@ -40,7 +40,7 @@ export function Delivery ({ deliveryType, deliveryCountry, deliveryCities }) {
         <Row>
           <SelectType>
             <select name={'deliveryType'} value={type} onChange={selectHandler}>
-              {typeList.map(opt => (
+              {deliveryTypeList.map(opt => (
                 <option key={`deliveryType-${opt}`}>{opt}</option>
               ))}
             </select>

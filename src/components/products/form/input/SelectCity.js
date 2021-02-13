@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { BorderedColumn } from './styled'
 
-const cityList = ['Саратов', 'Москва', 'Питер']
+const deliveryCitiesList = ['Саратов', 'Москва', 'Питер']
 
 SelectCity.propTypes = {
   deliveryCities: PropTypes.arrayOf(PropTypes.string),
@@ -10,7 +10,7 @@ SelectCity.propTypes = {
 }
 
 SelectCity.defaultProps = {
-  deliveryCities: cityList
+  deliveryCities: deliveryCitiesList
 }
 
 export default function SelectCity ({ deliveryCities, onChange }) {
@@ -23,7 +23,7 @@ export default function SelectCity ({ deliveryCities, onChange }) {
     returnChanges()
   }, [checked, onChange])
 
-  const citySet = new Set(cityList)
+  const citySet = new Set(deliveryCitiesList)
   const isAllchecked = checked.size === citySet.size
 
   const checkBoxHandler = e => {
@@ -41,7 +41,7 @@ export default function SelectCity ({ deliveryCities, onChange }) {
     if (isAllchecked) {
       return setChecked(new Set([]))
     }
-    return setChecked(new Set(cityList))
+    return setChecked(new Set(deliveryCitiesList))
   }
   return (
     <BorderedColumn>
@@ -52,7 +52,7 @@ export default function SelectCity ({ deliveryCities, onChange }) {
           checked={isAllchecked}
         /> Select All
       </label>
-      {cityList.map((opt, i) => (
+      {deliveryCitiesList.map((opt, i) => (
         <label key={`city-${opt}`}>
           <input
             type='checkbox'

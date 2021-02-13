@@ -5,6 +5,11 @@
 */
 import mocker from 'mocker-data-generator'
 
+function randomInteger (min, max) {
+  const rand = min + Math.random() * (max + 1 - min)
+  return Math.floor(rand)
+}
+
 const product = {
   id: {
     faker: 'random.uuid'
@@ -24,14 +29,21 @@ const product = {
   },
   currency: {
     static: 'USD'
+  },
+  deliveryType: {
+    // values: ['', 'Страна', 'Город']
+    values: ['Город']
+  },
+  'object.deliveryType=="Страна",deliveryCountry': {
+    values: ['Россия', 'США', 'Япония']
+  },
+  'object.deliveryType=="Город",deliveryCities': {
+    function: function () {
+      const values = ['Саратов', 'Москва', 'Питер']
+      const size = randomInteger(1, 3)
+      return values.slice(0, size)
+    }
   }
-  // delivery: {
-  //   function: function () {
-  //     const a1 = this.faker.commerce.productName();
-  //     // const a2 = this.faker.random.price;
-  //     return this.faker.random.arrayElement([a1, "a2"]);
-  //   }
-  // }
 }
 
 export async function fakeData (count = 5) {
