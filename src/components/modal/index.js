@@ -1,3 +1,1 @@
-// export * from './Modal'
-export * from './Modal2'
-export * from './ToggleContent'
+export { default as Modal } from './Modal'

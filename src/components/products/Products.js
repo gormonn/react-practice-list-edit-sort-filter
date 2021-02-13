@@ -18,7 +18,7 @@ function ProductsPage ({ products, dispatch }) {
   useEffect(() => {
     dispatch({
       type: PRODUCTS_FETCH_REQUESTED,
-      payload: { count: 100 }
+      payload: { count: 5 }
     })
   }, [dispatch])
 
@@ -33,7 +33,6 @@ function ProductsPage ({ products, dispatch }) {
         columns,
         filterBy: 'name'
       }} />
-      {/* <Modal open={isOpen}/> */}
     </div>
   )
 }

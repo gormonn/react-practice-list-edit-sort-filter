@@ -1,27 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { Outside, Wrapper, Content } from './styled'
+import { ToggleContent } from './ToggleContent'
+// import { Modal } from './Modal2'
+import { Outside, Wrapper, Content, CloseButtonWrapper } from './styled'
 
-export function Modal ({ open }) {
-  const [isOpen, openModal] = useState(false)
-  const closeModal = _ => openModal(false)
-
-  useEffect(() => {
-    if (open) {
-      openModal(true)
-    }
-  }, [open])
-
+export default function Modal (props) {
   return (
-    <Wrapper isOpen={isOpen} >
-      <Content>
-        modalwindow
-      </Content>
-      <Outside onClick={closeModal} />
-    </Wrapper>
+    <ToggleContent
+      toggle={show => props.button(show)}
+      content={hide => {
+        return ReactDOM.createPortal(
+          <Wrapper>
+            <Content>
+              <CloseButtonWrapper>
+                <button onClick={hide}>X</button>
+              </CloseButtonWrapper>
+              {props.children}
+            </Content>
+            <Outside onClick={hide} />
+          </Wrapper>,
+          document.getElementById('modal-root')
+        )
+      }}
+    />
   )
 }
 
 Modal.propTypes = {
-  open: PropTypes.bool
+  button: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired
 }

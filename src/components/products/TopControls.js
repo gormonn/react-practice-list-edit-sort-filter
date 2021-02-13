@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Modal, ToggleContent } from '../modal'
+import { Modal } from '../modal'
+// import { Modal, ToggleContent } from '../modal'
 import { ControlsRow, AddButton } from './styled'
 import Filter from './Filter'
 import { Form } from './form'
@@ -9,7 +10,12 @@ export default function TopControls ({ filterFromQuery }) {
   return (
     <ControlsRow>
       <Filter {...{ filterFromQuery }} />
-      <ToggleContent
+      <Modal button={
+        (show) => <AddButton onClick={show}>Add New</AddButton>
+      }>
+        <Form />
+      </Modal>
+      {/* <ToggleContent
         toggle={show => <AddButton onClick={show}>Add New</AddButton>}
         content={hide => (
           <Modal>
@@ -17,7 +23,7 @@ export default function TopControls ({ filterFromQuery }) {
             <Form/>
           </Modal>
         )}
-      />
+      /> */}
     </ControlsRow>
   )
 }
