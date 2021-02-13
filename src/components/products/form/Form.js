@@ -1,12 +1,20 @@
 import React from 'react'
 import { InputText, InputNumber, Delivery } from './input'
+import './style.css'
 
 export default function Form () {
-  const save = () => {
-    console.log()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    // TODO: for IE support need polyfill
+    const data = Object.fromEntries(formData.entries())
+    if (data.deliveryCities) {
+      data.deliveryCities = formData.getAll('deliveryCities')
+    }
+    console.log(data)
   }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <InputText
         name="name"
         label="Name"
@@ -26,7 +34,7 @@ export default function Form () {
         label="Price"
       />
       <Delivery />
-      <button onClick={save}></button>
+      <input type="submit" value="Add / Update"/>
     </form>
   )
 }

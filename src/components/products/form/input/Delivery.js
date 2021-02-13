@@ -3,21 +3,21 @@ import PropTypes from 'prop-types'
 import { Input } from './Input'
 import SelectCountry from './SelectCountry'
 import SelectCity from './SelectCity'
-import { Row } from './styled'
+import { Row, SelectType } from './styled'
 
 const typeList = ['', 'Страна', 'Город']
-const [Null, Country, City] = typeList
+const [Empty, Country, City] = typeList
 
 Delivery.propTypes = {
   deliveryType: PropTypes.string,
   deliveryCountry: PropTypes.string,
   deliveryCities: PropTypes.arrayOf(PropTypes.string)
 }
-
+console.log(Empty)
 Delivery.defaultProps = {
-  deliveryType: Null
-  // deliveryCountry: 'США',
-  // deliveryCities: ['Саратов', 'Москва', 'Питер']
+  deliveryType: City // Empty
+  // deliveryCountry: undefined,
+  // deliveryCities: undefined
 }
 
 export function Delivery ({ deliveryType, deliveryCountry, deliveryCities }) {
@@ -38,13 +38,13 @@ export function Delivery ({ deliveryType, deliveryCountry, deliveryCities }) {
       label={'Delivery'}
       render={() => (
         <Row>
-          <div>
+          <SelectType>
             <select name={'deliveryType'} value={type} onChange={selectHandler}>
               {typeList.map(opt => (
                 <option key={`deliveryType-${opt}`}>{opt}</option>
               ))}
             </select>
-          </div>
+          </SelectType>
           {isCountry &&
             <SelectCountry
               onChange={countryHandler}

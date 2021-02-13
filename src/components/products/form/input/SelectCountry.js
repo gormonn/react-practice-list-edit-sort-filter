@@ -25,8 +25,8 @@ export default function SelectCountry ({ deliveryCountry }) {
           <input
             type='radio'
             value={opt}
-            name={'country'}
-            selected={opt === deliveryCountry}
+            name={'deliveryCountry'}
+            checked={opt === deliveryCountry}
           /> {opt}
         </label>
       ))}

@@ -57,7 +57,7 @@ export default function SelectCity ({ deliveryCities, onChange }) {
           <input
             type='checkbox'
             value={opt}
-            name={`city-${i}`}
+            name="deliveryCities"
             checked={checked.has(opt)}
             onChange={checkBoxHandler}
           /> {opt}
