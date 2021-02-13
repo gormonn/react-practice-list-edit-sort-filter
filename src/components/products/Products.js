@@ -2,17 +2,18 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Table } from '../table'
-// import { Modal } from '../modal'
-import { BottomContols, AddButton } from './styled'
 import { PRODUCTS_FETCH_REQUESTED } from './reducer'
 import { useQuery } from './hooks'
 import columns from './columns'
-import Filter from './Filter'
+import TopControls from './TopControls'
 import './style.css'
 
 function ProductsPage ({ products, dispatch }) {
   const { data, loading, error } = products
+  // const [isOpen, openModal] = useState(false)
   const filterFromQuery = useQuery().get('search') || ''
+
+  // const createNew = _ => openModal(true)
 
   useEffect(() => {
     dispatch({
@@ -20,12 +21,10 @@ function ProductsPage ({ products, dispatch }) {
       payload: { count: 100 }
     })
   }, [dispatch])
+
   return (
     <div className="products">
-      <BottomContols>
-        <Filter {...{ filterFromQuery }} />
-        <AddButton>Add New</AddButton>
-      </BottomContols>
+      <TopControls />
       <Table {...{
         data,
         filter: filterFromQuery,
@@ -34,7 +33,7 @@ function ProductsPage ({ products, dispatch }) {
         columns,
         filterBy: 'name'
       }} />
-      {/* <Modal/> */}
+      {/* <Modal open={isOpen}/> */}
     </div>
   )
 }

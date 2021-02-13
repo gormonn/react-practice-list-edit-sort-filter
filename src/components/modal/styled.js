@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   left: 0px;
   width: 100%;
   height: 100vh;
-  padding: 25% 25%;
+  padding: 5% 25%;
 `
 export const Outside = styled.div`
   z-index: -1;

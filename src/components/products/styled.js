@@ -6,7 +6,7 @@ export const SpaceAround = styled.div`
   width: 100%;
 `
 
-export const BottomContols = styled.div`
+export const ControlsRow = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
