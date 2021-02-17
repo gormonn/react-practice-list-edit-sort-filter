@@ -1,6 +1,8 @@
 import React from 'react'
 import { SpaceAround } from './styled'
 import { Name, Count, Price } from '../table'
+import { Modal } from '../modal'
+import { Form } from './form'
 
 export default [
   {
@@ -12,7 +14,9 @@ export default [
     // eslint-disable-next-line react/display-name
     render: (item) => (
       <>
-        <Name>{item.name}</Name>
+        <Modal button={<Name>{item.name}</Name>}>
+          <Form record={item} />
+        </Modal>
         <Count>{item.count}</Count>
       </>
     )
