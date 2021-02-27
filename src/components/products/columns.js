@@ -14,7 +14,7 @@ export default [
     // eslint-disable-next-line react/display-name
     render: (item) => (
       <>
-        <Modal button={<Name>{item.name}</Name>}>
+        <Modal button={(show) => (<Name onClick={show}>{item.name}</Name>)}>
           <Form record={item} />
         </Modal>
         <Count>{item.count}</Count>
