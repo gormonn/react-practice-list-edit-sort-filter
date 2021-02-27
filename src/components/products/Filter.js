@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-
-const FilterWraper = styled.div`
-  display: flex;
-`
+import { FilterWraper } from './styled'
 
 const filterLink = v => (`?search=${v}`)
 

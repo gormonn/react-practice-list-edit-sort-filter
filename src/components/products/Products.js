@@ -1,64 +1,30 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Table, Name, Count, Price } from '../table'
+import { Table } from '../table'
 import { PRODUCTS_FETCH_REQUESTED } from './reducer'
 import { useQuery } from './hooks'
-import { BottomContols, AddButton } from './styled'
-import Filter from './Filter'
+import columns from './columns'
+import TopControls from './TopControls'
 import './style.css'
-
-const columns = [
-  {
-    key: 'name',
-    title: 'Name',
-    dataIndex: 'name',
-    sortDirections: ['default', 'asc', 'desc'],
-    size: 45,
-    // eslint-disable-next-line react/display-name
-    render: (item) => (
-      <>
-        <Name>{item.name}</Name>
-        <Count>{item.count}</Count>
-      </>
-    )
-  },
-  {
-    key: 'price',
-    title: 'Price',
-    dataIndex: 'price',
-    sortDirections: ['default', 'asc', 'desc'],
-    size: 30,
-    // eslint-disable-next-line react/display-name
-    render: (item) => <Price price={item.price} />
-  },
-  {
-    key: 'actions',
-    title: 'Actions',
-    size: 25,
-    // eslint-disable-next-line react/display-name
-    render: (item, action = { edit: () => {}, delete: () => {} }) => (
-      <>
-        <button onClick={action.edit(item)}>Edit</button>
-        <button onClick={action.delete(item)}>Delete</button>
-      </>
-    )
-  }
-]
 
 function ProductsPage ({ products, dispatch }) {
   const { data, loading, error } = products
+  // const [isOpen, openModal] = useState(false)
   const filterFromQuery = useQuery().get('search') || ''
 
+  // const createNew = _ => openModal(true)
+
   useEffect(() => {
-    dispatch({ type: PRODUCTS_FETCH_REQUESTED, payload: { count: 100 } })
+    dispatch({
+      type: PRODUCTS_FETCH_REQUESTED,
+      payload: { count: 5 }
+    })
   }, [dispatch])
+
   return (
     <div className="products">
-      <BottomContols>
-        <Filter {...{ filterFromQuery }} />
-        <AddButton>Add New</AddButton>
-      </BottomContols>
+      <TopControls />
       <Table {...{
         data,
         filter: filterFromQuery,

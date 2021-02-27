@@ -39,6 +39,7 @@ export const Name = styled(Text)`
   overflow: hidden;
   text-overflow: ellipsis;
   width: 80%;
+  cursor: pointer;
 `
 
 export const Count = styled.div`
